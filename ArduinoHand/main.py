@@ -12,8 +12,7 @@ import tkinter as tk
 ##clear_canvas = lambda: canvas.create_rectangle(0,0,640,480,fill="white")
 ##make_dot = lambda x,y: canvas.create_oval(x,y,x+10,y+10,fill = "black")
 
-
-board = pyfirmata.Arduino('COM10')
+board = pyfirmata.Arduino('COM9')
 motor = board.get_pin('d:2:s')
 # hnedy = zem
 # cerveny = napatia
@@ -61,6 +60,7 @@ with mp_hands.Hands(
         if len(lmList) != 0:
             x1, y1 = lmList[0][1], lmList[0][2]
             x2, y2 = lmList[8][1], lmList[8][2]
+            x3, y3 = lmList[5][1], lmList[5][2]
 
             ##      clear_canvas()
             ##      for i in lmList:
@@ -72,20 +72,23 @@ with mp_hands.Hands(
             cv2.line(image, (x1, y1), (x2, y2), (255, 0, 0), 3)
             length = math.hypot(x2 - x1, y2 - y1)
 
-            Pos = np.interp(length, [100, 200], [0, 100]) #((length-50)/150*50)
 
 
-            cv2.putText(image, str(round(Pos)), (50, 60), cv2.FONT_ITALIC, 2, (0, 0, 0))
-            #print(2*math.asin(Pos/(2*100)) * 180) pokus o vypocet uhla
+
+
+            uhol = (math.degrees(math.atan2(y1-y3,x1-x3) - math.atan2(y2-y3,x2-x3)))  #x1,y1 vypocet uhla pri
+            Pos = np.interp(length, [100, 200], [0, 100])
+            cv2.putText(image, str(round(uhol))+"°", (50, 60), cv2.FONT_ITALIC, 2, (0, 0, 0))
             #    0008   completely open, straight
             #    1640   90 deg towards palm
             #    4005   completely closed (when thumb is straight)
-            print(np.interp(length, [100, 200], [8, 4005]))
+            #print(np.interp(length, [100, 200], [8, 4005]))
 
 
 
 
             motorpos = (100 - round(Pos))
+            print(motorpos)
             motor.write(motorpos)
 
 

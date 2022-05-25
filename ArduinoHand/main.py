@@ -7,16 +7,9 @@ import pyfirmata
 import math
 import tkinter as tk
 
-##canvas = tk.Canvas(width = 640, height = 480)
-##canvas.pack()
-##clear_canvas = lambda: canvas.create_rectangle(0,0,640,480,fill="white")
-##make_dot = lambda x,y: canvas.create_oval(x,y,x+10,y+10,fill = "black")
 
 board = pyfirmata.Arduino('COM9')
 motor = board.get_pin('d:2:s')
-# hnedy = zem
-# cerveny = napatia
-# zlty = pin
 
 
 mp_drawing = mp.solutions.drawing_utils
@@ -62,10 +55,7 @@ with mp_hands.Hands(
             x2, y2 = lmList[8][1], lmList[8][2]
             x3, y3 = lmList[5][1], lmList[5][2]
 
-            ##      clear_canvas()
-            ##      for i in lmList:
-            ##        make_dot(i[1],i[2])
-            ##      canvas.update()
+
 
             cv2.circle(image, (x1, y1), 15, (255, 255, 255))
             cv2.circle(image, (x2, y2), 15, (255, 255, 255))
@@ -77,12 +67,9 @@ with mp_hands.Hands(
 
 
             uhol = (math.degrees(math.atan2(y1-y3,x1-x3) - math.atan2(y2-y3,x2-x3)))  #x1,y1 vypocet uhla pri
-            Pos = np.interp(length, [100, 200], [0, 100])
+            Pos = np.interp(uhol, [52, 166], [0, 100])
             cv2.putText(image, str(round(uhol))+"°", (50, 60), cv2.FONT_ITALIC, 2, (0, 0, 0))
-            #    0008   completely open, straight
-            #    1640   90 deg towards palm
-            #    4005   completely closed (when thumb is straight)
-            #print(np.interp(length, [100, 200], [8, 4005]))
+
 
 
 

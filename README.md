@@ -14,7 +14,7 @@
   Program, ktorý pomocou Mediapipe merá uhol ukazováka a prenáša pohyb na servomotor Arduino. Jeho účelom
   je odskúšanie knižnice na ovládanie pohyblivých častí. Súbor .ino je potrebné nahrať do Arduina, nastaviť port
   v pythonovskom kóde a spustiť.
-  ![This is an image](https://i.ibb.co/V2XtFsc/imagge.jpg)
+  [Schéma zapojenia](https://i.ibb.co/V2XtFsc/imagge.jpg)
   
 
   

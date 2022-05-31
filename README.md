@@ -7,8 +7,8 @@
   robota NICO. (Jupyter notebook)
   
 * #### Mediapipe NICO controller:
-  Zaznamenávanie a meranie uhlov prstov pri pohybe pomocou Mediapipe a následné prevedenie na robota NICO.
-      [Ukážka práce s programom](https://www.youtube.com/watch?v=TdKRRx3VPVc)
+  Zaznamenávanie a meranie uhlov prstov pri pohybe pomocou Mediapipe a následné prevedenie na robota NICO.  
+  [Ukážka práce s programom](https://www.youtube.com/watch?v=TdKRRx3VPVc)
   
 * #### Arduino hand
   Program, ktorý pomocou Mediapipe merá uhol ukazováka a prenáša pohyb na servomotor Arduino. Jeho účelom
